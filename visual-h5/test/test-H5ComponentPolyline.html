@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+            font-size: 12px;
+        }
+
+        .iphone {
+            width: 340px;
+            height: 540px;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -270px 0 0 -140px;
+        }
+    </style>
+    <link rel="stylesheet" href="../css/test-H5ComponentBase.css">
+    <script src="../js/lib/jquery.js"></script>
+    <script src="../js/test-H5ComponentBase.js"></script>
+
+    <!-- 引入柱图的资源 -->
+    <link rel="stylesheet" href="../css/test-H5ComponentPolyline.css">
+    <script src="../js/test-H5ComponentPolyline.js"></script>
+</head>
+
+<body>
+    <!-- 用于开发测试 H5ComponentPolyline 对象(折线图组件) -->
+    <div class="iphone">
+
+    </div>
+
+    <script>
+        var cfg = {
+            type: 'polyline',
+
+            width: 530,
+            height: 400,
+            data: [
+                ['name1', .4, '#ff7676'],
+                ['name2', .1],
+                ['name3', .2],
+                ['name4', .05],
+                ['name5', .35]
+            ],
+            css: {
+                top: 100,
+                opacity: 0
+            },
+            animateIn: {
+                opacity: 1,
+                top: 200
+            },
+            animateOut: {
+                opacity: 0,
+                top: 100
+            },
+            center: true
+        }
+
+        var h5 = new H5ComponentPolyline('myBarComponent', cfg);
+        $('.iphone').append(h5);
+
+        var leave = true;
+        $('body').click(function () {
+            leave = !leave;
+            $('.h5_component').trigger(leave ? 'onLeave' : 'onLoad'); // 图文组件接收onLeave onLoad事件 
+        })
+    </script>
+</body>
+
+</html>

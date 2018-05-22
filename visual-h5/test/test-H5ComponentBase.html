@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+            font-size: 12px;
+        }
+
+        .iphone {
+            width: 340px;
+            height: 540px;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -270px 0 0 -140px;
+        }
+    </style>
+    <link rel="stylesheet" href="../css/test-H5ComponentBase.css">
+    <script src="../js/test-H5ComponentBase.js"></script>
+    <script src="../js/lib/jquery.js"></script>
+</head>
+
+<body>
+    <!-- 用于开发测试 H5ComponentBase 对象(基本的图文组件) -->
+    <div class="iphone">
+
+    </div>
+
+    <script>
+        var cfg = {
+            type:'base',
+            bg:'./p1_people.png',
+            width: 514,
+            height: 306,
+            css: {
+                bottom:0,
+                opacity:0,
+            },
+            animateIn:{bottom:80,opacity:1},
+            animateOut:{bottom:0,opacity:0},
+            center: true
+        }
+
+        var h5 = new H5ComponentBase('myName',cfg);
+        $('.iphone').append(h5);
+        
+        var leave = true;
+        $('body').click(function() {
+            leave = !leave;
+            $('.h5_component').trigger(leave ? 'onLeave' : 'onLoad'); // 图文组件接收onLeave onLoad事件 
+        })
+    </script>
+</body>
+
+</html>
